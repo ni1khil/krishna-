@@ -3,151 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room Booking Site</title>
+    <title>Book Your Stay | Krishna Hotel</title>
+    <meta name="description" content="Book your stay at Krishna Hotel - premium rooms, affordable prices, and exceptional service.">
+    <meta name="keywords" content="Krishna Hotel, Book Hotel, Luxury Stay, Deluxe Room, Suite Room, Family Room">
+    <meta name="author" content="Krishna Hotel">
     <style>
+        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
             margin: 0;
             padding: 0;
-            background-image: url('/home/ni/nik.c/krishna hotel/index.png');
-            background-size: cover;
-            background-position: center;
-            color: black;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-family: 'Georgia', serif;
+        }
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.3rem;
+            font-style: italic;
+        }
+        header a {
+            color: #FFD700;
+            text-decoration: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.1rem;
+        }
+        header a:hover {
+            color: #fff;
+        }
+
+        /* Booking Form Container */
+        .booking-form-container {
+            padding: 40px 25px;
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .booking-form-container h2 {
+            text-align: center;
+            font-size: 2.4rem;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        /* Form Styling */
+        .booking form {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            gap: 25px;
         }
-        .header {
-            text-align: center;
-            padding: 60px;
-            background-color: rgb(30, 30, 139);
-            margin-bottom: 30px;
-            border-radius: 10px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+
+        .booking label {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #555;
         }
-        .header h1 {
-            margin: 0;
-            font-size: 3em;
-            color:white;
-        }
-        .header p {
-            font-size: 1.3em;
-            color: white;
-        }
-        .container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .room {
-            background: grey;
-            border-radius: 10px;
-            padding: 20px;
-            width: 320px;
-            text-align: center;
-            margin: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .room:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-        }
-        .room img {
-            width: 100%;
-            border-radius: 10px;
-            max-height: 220px;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-        .room img:hover {
-            transform: scale(1.05);
-        }
-        .price {
-            font-size: 1.6em;
-            margin: 10px 0;
-            color: white;
-        }
-        .book-button {
-            background-color: #007bff;
-            color: white;
-            padding: 12px 20px;
-            border: none;
+
+        .booking input, .booking select, .booking button {
+            padding: 15px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
             border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .booking input::placeholder {
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .booking button {
+            background-color: #4CAF50;
+            color: white;
             cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.3s, transform 0.3s;
-            font-size: 1.1em;
-            margin-top: 10px;
+            font-weight: bold;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
-        .book-button:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
+
+        .booking button:hover {
+            background-color: #45a049;
+            transform: scale(1.03);
         }
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .room {
-                width: 90%;
-            }
+
+        /* Room Type Images */
+        .room-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 30px;
         }
-        footer {
-            text-align: center;
-            padding: 30px;
-            margin-top: 30px;
-            background-color: white;
-            border-top: 1px solid white;
-            color: black;
+
+        .room-images img {
+            width: calc(33.33% - 10px);
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
         }
-        footer h3 {
-            margin: 0;
-            font-size: 1.5em;
-            color: black;
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
         }
-        footer p {
-            margin: 5px 0;
-            font-size: 1em;
+        .footer a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: white;
+        }
+        .social-icons {
+            margin-top: 15px;
+        }
+        .social-icons img {
+            width: 30px;
+            margin: 0 10px;
+            filter: brightness(0) invert(1);
+            transition: transform 0.2s ease;
+        }
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .room-images img {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Welcome to Krishna Hotel Room Booking</h1>
-        <p>Experience luxury and comfort like never before!</p>
-    </div>
 
-    <div class="container">
-        <div class="room">
-            <h2>Deluxe Room</h2>
-            <img src="/home/ni/nik.c/krishna hotel/room2.png" alt="Deluxe Room">
-            <div class="price">Price: ₹10,000</div>
-            <p>Enjoy a comfortable stay in our beautifully designed Deluxe Room with all modern amenities.</p>
-            <a href="deluxe_booking.html" class="book-button">Book Now</a>
+    <header>
+        <h1>Book Your Stay at Krishna Hotel</h1>
+        <p>Experience Luxury and Comfort at Its Best</p>
+        <a href="index.html">Back to Homepage</a>
+    </header>
+
+    <div class="booking-form-container">
+        <h2>Complete Your Booking</h2>
+        
+        <!-- Room Type Images -->
+        <div class="room-images">
+            <img src="/home/ni/nik.c/krishna hotel/new/deluxe.png" alt="Image of a Deluxe Room">
+            <img src="/home/ni/nik.c/krishna hotel/new/suite.png" alt="Image of a Suite Room">
+            <img src="/home/ni/nik.c/krishna hotel/new/familyroom.png" alt="Image of a Family Room">
         </div>
 
-        <div class="room">
-            <h2>Super Deluxe Room</h2>
-            <img src="room1.jpg" alt="Super Deluxe Room">
-            <div class="price">Price: ₹15,000</div>
-            <p>Experience ultimate luxury in our Super Deluxe Room, featuring premium furnishings and breathtaking views.</p>
-            <a href="super_deluxe_booking.html" class="book-button">Book Now</a>
-        </div>
+        <!-- Booking Form -->
+        <form action="/home/ni/nik.c/krishna hotel/new/generate_receipt.php" method="POST">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <label for="contact">Contact Number:</label>
+            <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" placeholder="10-digit phone number" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+
+            <label for="room_type">Room Type:</label>
+            <select id="room_type" name="room_type" required>
+                <option value="Deluxe">Deluxe Room</option>
+                <option value="Suite">Suite Room</option>
+                <option value="Family">Family Room</option>
+            </select>
+
+            <label for="checkin">Check-in Date:</label>
+            <input type="date" id="checkin" name="checkin" required>
+
+            <label for="checkout">Check-out Date:</label>
+            <input type="date" id="checkout" name="checkout" required>
+
+            <label for="payment">Payment Method:</label>
+            <select id="payment" name="payment" required>
+                <option value="Card">Credit/Debit Card</option>
+                <option value="UPI">UPI</option>
+                <option value="Cash">Cash</option>
+            </select>
+
+            <button type="submit">Confirm Booking</button>
+        </form>
     </div>
 
-    <footer>
-        <h3>Contact Us</h3>
-        <p><strong>Phone no :</strong> <strong>8273646729</strong></p>
-        <p><STRONG>Email:</STRONG> <a style="color : blue"> krishnahotel777@hotel.ac.in</a></p>
-        <p><strong>Location:</strong> <strong>ABC Kamlanagar, Agra</strong></p>
-        <p><strong>Established:</strong> <strong>2005</strong></p>
-        <p><strong>&copy; 2024 Krishna Hotel. All Rights Reserved.</strong></p>
-    </footer>
-</body>
-</html>
+    <footer class="footer">
+        <p>&copy; 2024 Krishna Hotel. All Rights Reserved. | <a href="mailto:krishnahotel@hotel.in">Contact Us</a></p>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" aria-label="Visit us on Facebook">
+                <img src="/home/ni/nik.c/krishna hotel/new/facebook.png" alt="Facebook Icon">
+            </a>
+            <a href="https://twitter.com" target="_blank" aria-label="Visit us on Twitter">
+                <img src="/home/ni/nik.c/krishna hotel/new/twiter.png" alt="Twitter Icon">
+            </a>
+            <a href="https://instagram.com" target="_blank" aria-label="Visit us on Instagram">
+                <img src="/home/ni/nik.c/krishna hotel/new/insta.png" alt="Instagram Icon">
+            </a>
+        </div>
+        <footer>
+            <p>&copy; 2024 Krishna Hotel. All Rights Reserved.</p>
+        </footer>
+        </body>
+        </html>
+        
